@@ -13,10 +13,20 @@ module Skit
 
   # Menu contains the Toolbar/Menu structures.
   module Menu
-    plugins_menu = UI.menu('Plugins')
-    submenu = plugins_menu.add_submenu('Skit')
+    menu = UI.menu('Plugins')
+    submenu = menu.add_submenu('Skit')
     submenu.add_item('Join') do
       LineTools.join
     end
+
+    toolbar = UI::Toolbar.new('Join')
+    join = UI::Command.new('Join') do
+      puts File.join(File.dirname(__FILE__), 'skit', 'images', 'join.svg')
+      LineTools.join
+    end
+    join.menu_text = 'Join'
+    join.large_icon = join.small_icon = File.join(File.dirname(__FILE__), 'skit', 'images', 'join.svg')
+    toolbar = toolbar.add_item(join)
+    toolbar.show
   end
 end
