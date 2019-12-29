@@ -15,9 +15,6 @@ module Skit
   module Menu
     plugins_menu = UI.menu('Plugins')
     submenu = plugins_menu.add_submenu('Skit')
-    submenu.add_item('Connect') do
-      LineTools.connect
-    end
     submenu.add_item('Join') do
       LineTools.join
     end
